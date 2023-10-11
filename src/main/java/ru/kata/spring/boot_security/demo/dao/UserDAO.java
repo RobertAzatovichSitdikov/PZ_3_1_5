@@ -17,7 +17,7 @@ public class UserDAO {
         return entityManager.createQuery("select u from User u", User.class).getResultList();
     }
 
-    public User show(int id) {
+    public User show(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -29,7 +29,7 @@ public class UserDAO {
         entityManager.merge(updatedUser);
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         entityManager.remove(show(id));
     }
 }

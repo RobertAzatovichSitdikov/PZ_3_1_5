@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.dao.UserDAO;
+import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -25,7 +27,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public User show(int id) {
+    public User show(Long id) {
         return userDAO.show(id);
     }
 
@@ -40,7 +42,7 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(int id) {
+    public void delete(Long id) {
         userDAO.delete(id);
     }
 }
