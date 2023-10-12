@@ -20,15 +20,10 @@ public class UsersController {
     private final UserService userService;
 
     @Autowired
-    public UsersController(UserService userService, UserRepository userRepository) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
-//    @GetMapping()
-//    public String index(Model model) {
-//        model.addAttribute("users", userService.index());
-//        return "users/index";
-//    }
 
     @GetMapping()
     public String show(Model model) {
@@ -36,44 +31,4 @@ public class UsersController {
         return "user";
     }
 
-//    @GetMapping("/new")
-//    public String newUser(@ModelAttribute("user") User user) {
-//
-//        return "users/new";
-//    }
-//
-//    @PostMapping()
-//    public String create(@ModelAttribute("user") @Valid User user,
-//                         BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "users/new";
-//        }
-//
-//        userService.save(user);
-//
-//        return "redirect:/users";
-//    }
-//
-//    @GetMapping("/{id}/edit")
-//    public String edit(Model model, @PathVariable("id") Long id) {
-//        model.addAttribute("user", userService.show(id));
-//        return "users/edit";
-//    }
-//
-//    @PatchMapping("/{id}")
-//    public String update(@ModelAttribute("user") @Valid User user,
-//                         BindingResult bindingResult,
-//                         @PathVariable("id") int id) {
-//        if (bindingResult.hasErrors()) {
-//            return "users/edit";
-//        }
-//        userService.update(user);
-//        return "redirect:/users";
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") Long id) {
-//        userService.delete(id);
-//        return "redirect:/users";
-//    }
 }
