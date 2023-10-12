@@ -64,11 +64,11 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "users/edit";
         }
-        User originUser = userService.show(id);
-        originUser.setAge(user.getAge());
-        originUser.setEmail(user.getEmail());
-        originUser.setUsername(user.getUsername());
-        userService.update(originUser);
+//        User originUser = userService.show(id);
+//        originUser.setAge(user.getAge());
+//        originUser.setEmail(user.getEmail());
+//        originUser.setUsername(user.getUsername());
+        userService.update(user);
         return "redirect:/admin";
     }
 

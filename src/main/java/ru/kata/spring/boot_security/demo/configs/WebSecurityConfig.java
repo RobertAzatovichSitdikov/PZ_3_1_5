@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/", "/index").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -67,6 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 }

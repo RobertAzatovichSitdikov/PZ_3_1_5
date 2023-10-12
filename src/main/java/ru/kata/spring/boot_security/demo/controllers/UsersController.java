@@ -19,12 +19,9 @@ public class UsersController {
 
     private final UserService userService;
 
-    private final UserRepository userRepository;
-
     @Autowired
     public UsersController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
 //    @GetMapping()
@@ -35,10 +32,7 @@ public class UsersController {
 
     @GetMapping()
     public String show(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        User user = userRepository.findByUsername(userDetails.getUsername());
-        model.addAttribute("user", userService.show(user.getId()));
+        model.addAttribute("user", userService.show(model));
         return "user";
     }
 
