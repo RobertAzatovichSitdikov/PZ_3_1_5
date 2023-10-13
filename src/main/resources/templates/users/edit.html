@@ -19,8 +19,14 @@
     <input type="text" th:field="*{email}" id="email"/>
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
     <br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    <br/>
     <input type="submit" value="Update!">
 </form>
+
+
 
 <div class="add-user-link">
     <h2 style="text-align: center"><a href="/logout">Logout</a></h2>
