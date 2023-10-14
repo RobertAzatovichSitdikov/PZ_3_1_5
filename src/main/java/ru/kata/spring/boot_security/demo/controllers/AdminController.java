@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import ru.kata.spring.boot_security.demo.util.UserValidator;
+
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -45,6 +48,8 @@ public class AdminController {
 
     @PostMapping()
     public String create(@ModelAttribute("user") @Valid User user,
+                         @RequestParam(required = false) String roleAdmin,
+                         @RequestParam(required = false) String roleUser,
                          BindingResult bindingResult) {
 
         userValidator.validate(user, bindingResult);
@@ -53,25 +58,28 @@ public class AdminController {
             return "users/new";
         }
 
-        userService.save(user);
+        userService.save(user, roleUser, roleAdmin);
 
         return "redirect:/admin";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") Long id) {
+        userService.getModelRoles(id, model);
         model.addAttribute("user", userService.show(id));
         return "users/edit";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user,
+                         @RequestParam(required = false) String roleAdmin,
+                         @RequestParam(required = false) String roleUser,
                          BindingResult bindingResult,
                          @PathVariable("id") Long id) {
         if (bindingResult.hasErrors()) {
             return "users/edit";
         }
-        userService.update(user);
+        userService.update(user, roleUser, roleAdmin);
         return "redirect:/admin";
     }
 

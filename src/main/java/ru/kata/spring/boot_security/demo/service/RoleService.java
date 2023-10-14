@@ -7,6 +7,7 @@ import ru.kata.spring.boot_security.demo.dao.RoleDAO;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class RoleService {
 
     @Transactional
     public Set<Role> getAllRoles() {
-        return roleRepository.findAll().stream().collect(Collectors.toSet());
+        return new HashSet<>(roleRepository.findAll());
     }
 
     @Transactional

@@ -20,7 +20,7 @@ public class RoleDAO {
         Role role = null;
         try {
             role = getEntityManager()
-                    .createQuery("SELECT r FROM Role r WHERE r.role=:role", Role.class)
+                    .createQuery("SELECT r FROM Role r WHERE r.name=:role", Role.class)
                     .setParameter("role", name)
                     .getSingleResult();
         } catch (Exception e) {
