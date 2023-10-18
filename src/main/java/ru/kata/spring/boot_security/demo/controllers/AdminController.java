@@ -30,7 +30,7 @@ public class AdminController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("users", userService.index());
+        model.addAttribute("index", userService.index());
         model.addAttribute("user", userService.show(model));
         return "bootstrap/admin";
     }
