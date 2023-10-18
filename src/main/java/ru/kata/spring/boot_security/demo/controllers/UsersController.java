@@ -28,7 +28,7 @@ public class UsersController {
     @GetMapping()
     public String show(Model model) {
         model.addAttribute("user", userService.show(model));
-        return "user";
+        return "bootstrap/user";
     }
 
 }
