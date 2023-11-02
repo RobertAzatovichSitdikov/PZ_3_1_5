@@ -107,6 +107,7 @@ public class UserService {
         originUser.setAge(updatedUser.getAge());
         originUser.setEmail(updatedUser.getEmail());
         originUser.setUsername(updatedUser.getUsername());
+        originUser.setRoles(updatedUser.getRoles());
         if (!updatedUser.getPassword().equals(originUser.getPassword())) {
             originUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         }
